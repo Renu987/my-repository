@@ -1,36 +1,42 @@
-from flask import Flask, request, jsonify
+def add(a, b):
+    return a + b
 
-app = Flask(__name__)
+def subtract(a, b):
+    return a - b
 
-@app.route('/')
-def home():
-    return "Simple Calculator App"
+def multiply(a, b):
+    return a * b
 
-@app.route('/add', methods=['POST'])
-def add():
-    data = request.get_json()
-    result = data['a'] + data['b']
-    return jsonify(result=result)
+def divide(a, b):
+    if b == 0:
+        return "Division by zero is not allowed"
+    return a / b
 
-@app.route('/subtract', methods=['POST'])
-def subtract():
-    data = request.get_json()
-    result = data['a'] - data['b']
-    return jsonify(result=result)
+if __name__ == "__main__":
+    while True:
+        print("Simple Calculator")
+        print("1. Add")
+        print("2. Subtract")
+        print("3. Multiply")
+        print("4. Divide")
+        print("5. Exit")
 
-@app.route('/multiply', methods=['POST'])
-def multiply():
-    data = request.get_json()
-    result = data['a'] * data['b']
-    return jsonify(result=result)
+        choice = input("Enter choice (1/2/3/4/5): ")
 
-@app.route('/divide', methods=['POST'])
-def divide():
-    data = request.get_json()
-    if data['b'] == 0:
-        return jsonify(error="Division by zero is not allowed"), 400
-    result = data['a'] / data['b']
-    return jsonify(result=result)
+        if choice in ['1', '2', '3', '4']:
+            num1 = float(input("Enter first number: "))
+            num2 = float(input("Enter second number: "))
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+            if choice == '1':
+                print("Result:", add(num1, num2))
+            elif choice == '2':
+                print("Result:", subtract(num1, num2))
+            elif choice == '3':
+                print("Result:", multiply(num1, num2))
+            elif choice == '4':
+                print("Result:", divide(num1, num2))
+        elif choice == '5':
+            print("Exiting...")
+            break
+        else:
+            print("Invalid input, please enter a number between 1 and 5.")
