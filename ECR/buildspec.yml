@@ -28,13 +28,13 @@ phases:
     commands:
       - echo "Building Docker image..."
       - cd ECR/
-      - docker build -t "$ECR_REPOSITORY_URI/code-build:latest" .
+      - docker build -t "$ECR_REPOSITORY_URI:code-build" .
       - echo "Docker image built successfully!"
       
   post_build:
     commands:
       - echo "Pushing Docker image to ECR..."
-      - docker push "$ECR_REPOSITORY_URI/code-build:latest"
+      - docker push "$ECR_REPOSITORY_URI:code-build"
       - echo "Build and push completed successfully!"
 
 artifacts:
