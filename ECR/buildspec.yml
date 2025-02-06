@@ -13,7 +13,7 @@ phases:
       python: 3.11  # Specify the Python version you need
     commands:
       - echo "Installing dependencies..."
-      - pip install -r day-14/simple-python-app/requirements.txt  # Install Python dependencies
+      - pip install -r ECR/requirements.txt  # Install Python dependencies
 
   pre_build:
     commands:
@@ -27,17 +27,17 @@ phases:
   build:
     commands:
       - echo "Building Docker image..."
-      - cd day-14/simple-python-app/
-      - docker build -t "$ECR_REPOSITORY_URI/simple-python-flask-app:latest" .
+      - cd ECR/
+      - docker build -t "$ECR_REPOSITORY_URI/code-build:latest" .
       - echo "Docker image built successfully!"
       
   post_build:
     commands:
       - echo "Pushing Docker image to ECR..."
-      - docker push "$ECR_REPOSITORY_URI/simple-python-flask-app:latest"
+      - docker push "$ECR_REPOSITORY_URI/code-build:latest"
       - echo "Build and push completed successfully!"
 
 artifacts:
   files:
     - '**/*'  # Adjust as needed to capture relevant files
-  base-directory: ../simple-python-app  # The base directory to include artifacts from
+  base-directory: ../ECR  # The base directory to include artifacts from
