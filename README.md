@@ -2,7 +2,7 @@ eksctl create cluster --name my-cluster --region us-west-2 --nodegroup-name linu
 
 aws eks --region us-west-2 update-kubeconfig --name my-cluster
 
-
+```
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -22,10 +22,11 @@ spec:
         image: <your-ecr-repo-url>:<tag>
         ports:
         - containerPort: 80
+```
 
 kubectl apply -f deployment.yaml
 
-
+```
 apiVersion: v1
 kind: Service
 metadata:
@@ -38,8 +39,10 @@ spec:
   - protocol: TCP
     port: 80
     targetPort: 80
+```
 
 kubectl apply -f service.yaml
 
 kubectl get deployments
+
 kubectl get services
