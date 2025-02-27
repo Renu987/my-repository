@@ -1,0 +1,15 @@
+First Create a IAM user and give required roles access 
+
+aws-cli --> configure to IAM  user --> s3 bukcet --> create ssh key pair ()
+
+prerequisite : kubectl installation, kops install
+
+create kop cluster using commands ---> bucket name, region name ---> 
+
+kubectl get nodes --> u will get output once cluster is ready
+
+helm --> chart(mysql) --> repos --> templates ( deplo, service yml ) ---> values.yml --> give docker image ,node port/load balancer, ingress resource ,ingress controller
+
+
+
+
