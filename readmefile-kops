@@ -10,6 +10,8 @@ kubectl get nodes --> u will get output once cluster is ready
 
 helm --> chart(mysql) --> repos --> templates ( deplo, service yml ) ---> values.yml --> give docker image ,node port/load balancer, ingress resource ,ingress controller
 
+helm install 
+
 
 
 
